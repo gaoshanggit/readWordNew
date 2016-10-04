@@ -22,15 +22,17 @@ public class UserDao  {
 
     // 查询匹配用户名，密码 的用户数量
     public int getMatchCount(String userName,String passWord){
-        String sqlStr =" SELECT count(*) FROM user " +
+        String sqlStr =" SELECT count(*) FROM t_user " +
                 " where user_name =? and password=? ";
         return jdbcTemplate.queryForInt(sqlStr,new Object[]{userName,passWord});
     }
 
+
+
     // 根据用户名查询用户的 sql
     public User findUserByUserName(final String userName){
 
-        String sqlStr = " SELECT user_id,user_name "+" FROM user WHERE user_name = ? ";
+        String sqlStr = " SELECT user_id,user_name,credits"+" FROM t_user WHERE user_name=? ";
         final User user = new User();
         jdbcTemplate.query(sqlStr,new Object[]{userName},
                 new RowCallbackHandler() {
@@ -46,10 +48,11 @@ public class UserDao  {
     }
 
     public void updateLoginInfo(User user){
-        String sqlStr = "UPDATE user SET last_visit=?,last_ip=?,credits=? "
+        String sqlStr = "UPDATE t_user SET last_visit=?,last_ip=?,credits=? "
                 +"WHERE user_id=? ";
         jdbcTemplate.update(sqlStr,new Object[]{user.getLastVisit(),
                 user.getLastIp(),user.getCredits(),user.getUserId()});
     }
+
 
 }

@@ -1,8 +1,10 @@
+import com.gs.app.read.api.domain.UserDao;
+import com.gs.app.read.impl.UserServiceImpl;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import com.gs.app.read.api.domain.UserDao;
-import org.junit.Test;
-import com.gs.app.read.api.service.UserService;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 
@@ -11,42 +13,33 @@ import javax.annotation.Resource;
  * @version 1.0
  * @since 2016/9/21 12:05
  */
-
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 public class ReadWordServiceTest {
 
-    /*  @Resource
-      private ReadWordService readWordService;
-      @Test
-      public void readWordTest(){
-
-          String filePath="d://test.doc";
-          FileInputStream fileInputStream  =null;
-          try {
-              fileInputStream = new FileInputStream(new File(filePath));
-          } catch (FileNotFoundException e) {
-              e.printStackTrace();
-          }
-          readWordService.readWordTest(fileInputStream);
-      }*/
     @Resource
     private UserDao userDao;
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
+
     @Test
-    public void readWordTest() {
-
-         boolean b1 = userService.hasMatchUser("admin","123456");
-      /*  LoginLog loginLog = new LoginLog();
-        loginLog.setIp("123.111.1111.1");
-        loginLog.setUserId(UUID.randomUUID().toString());
-        loginLog.setLoginLogId(UUID.randomUUID().toString());
-        loginLog.setLoginDate(new Date());
-        userDao.insertLogin(loginLog);*/
-
+    public void hasMathUser() {
+        boolean b1 = userServiceImpl.hasMatchUser("admin", "123456");
+        System.out.println(b1 + "**************");
     }
 
+
+    @Test
+    public void select() {
+        userServiceImpl.findUserByUserName("admin");
+    }
+
+    @Test
+    public  void  insetLog(){
+
+
+    }
 
    /* public static void main(String[] args) {
         try {
