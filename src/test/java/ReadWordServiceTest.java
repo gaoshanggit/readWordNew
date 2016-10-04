@@ -1,5 +1,5 @@
 import com.gs.app.read.api.domain.UserDao;
-import com.gs.app.read.impl.UserServiceImpl;
+import com.gs.app.read.api.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +17,19 @@ import javax.annotation.Resource;
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 public class ReadWordServiceTest {
 
-    @Resource
-    private UserDao userDao;
-
     @Autowired
-    private UserServiceImpl userServiceImpl;
+    private UserService userService;
 
     @Test
     public void hasMathUser() {
-        boolean b1 = userServiceImpl.hasMatchUser("admin", "123456");
+        boolean b1 = userService.hasMatchUser("admin", "123456");
         System.out.println(b1 + "**************");
     }
 
 
     @Test
     public void select() {
-        userServiceImpl.findUserByUserName("admin");
+        userService.findUserByUserName("admin");
     }
 
     @Test
