@@ -1,50 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	id="WebApp_ID" version="3.0">
-	
-	<display-name>autogen-metadata</display-name>
-	
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
-	<!--
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			classpath*:applicationContext*.xml,classpath*:spring-localCache.xml
-		</param-value>
-	</context-param>
-	
-	<listener>
-		<listener-class>org.springframework.com.gs.app.read.context.ContextLoaderListener</listener-class>
-	</listener>
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
 
-    <servlet>
-        <servlet-name>health</servlet-name>
-        <jsp-file>/health.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>health</servlet-name>
-        <url-pattern>/health.jsp</url-pattern>
-    </servlet-mapping>
+    <!-- 从类路径下加载Spring配置文件 classpath关键字特指类路径下加载	-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath*:applicationContext*.xml
+        </param-value>
+    </context-param>
+<!--负责启动Spring 容器的监听器，它将应用1处的上下文参数获得Spring 的配置文件地址 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
-    <servlet>
-		<servlet-name>spring</servlet-name>
-		<servlet-class>org.springframework.com.gs.app.read.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>2</load-on-startup>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>spring</servlet-name>
-		<url-pattern>/*</url-pattern>
-	</servlet-mapping>
-	-->
+
 </web-app>
