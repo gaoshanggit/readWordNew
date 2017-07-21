@@ -30,4 +30,7 @@ public interface UserService {
      */
     void loginSuccess(User user);
 
+
+    void demo(String str);
+
 }
