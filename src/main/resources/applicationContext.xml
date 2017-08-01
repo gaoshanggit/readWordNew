@@ -29,13 +29,13 @@
 
     <!-- 定义一个使用 DBCP 连接池的数据源
      p:url="jdbc:postgresql://localhost:5432/gaoshan"
-     lochlhost 本地地址 、5432 端口 、gaoshan 数据库名称   -->
+     localhost 本地地址 、5432 端口 、gaoshan 数据库名称   -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close"
           p:driverClassName="org.postgresql.Driver"
-          p:url="jdbc:postgresql://localhost:5432/gaoshan"
+          p:url="jdbc:postgresql://localhost:5432/demo"
           p:username="postgres"
-          p:password="postgres"
+          p:password="123456"
             />
 
     <!-- 定义一个使用 JDBC 模板 Bean -->
